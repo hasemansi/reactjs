@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Login Form</h2>
+    <form id="login-form">
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email"><span id="email-error" class="error"></span><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        const form = document.getElementById('login-form'); form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            validateForm();
+        });
+
+        function validateForm() {
+            const email = document.getElementById('email').value;
+
+            // Regular Expression for Email Validation
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').innerText = 'Invalid Email ID. Please enter a valid email address.';
+            } else {
+                document.getElementById('email-error').innerText = '';
+                // Email is valid, proceed with login
+                alert('Login successful!');
+            }
+        }
+    </script>
+</body>
+
+</html>
